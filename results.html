@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultados de la Simulación</title>
+</head>
+<body>
+    <h1>Resultados de la Simulación</h1>
+    <canvas id="waveCanvas"></canvas>
+
+    <script>
+        const time = {{ time|safe }};
+        const originalWave = {{ original_wave|safe }};
+        const distortedWave = {{ distorted_wave|safe }};
+        
+        const ctx = document.getElementById('waveCanvas').getContext('2d');
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: time,
+                datasets: [
+                    { label: 'Onda Original', data: originalWave, borderColor: 'blue' },
+                    { label: 'Onda Distorsionada', data: distortedWave, borderColor: 'red' }
+                ]
+            }
+        });
+    </script>
+</body>
+</html>
