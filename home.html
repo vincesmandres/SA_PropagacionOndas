@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simulación Sísmica</title>
+</head>
+<body>
+    <h1>Simulación de Propagación de Ondas</h1>
+    <form action="{% url 'simulate_wave' %}" method="GET">
+        <label for="soil_id">Seleccione el tipo de suelo:</label>
+        <select name="soil_id" required>
+            {% for soil in soils %}
+                <option value="{{ soil.id }}">{{ soil }}</option>
+            {% endfor %}
+        </select>
+        <br>
+
+        <label for="signal_id">Seleccione la señal sísmica:</label>
+        <select name="signal_id" required>
+            {% for signal in signals %}
+                <option value="{{ signal.id }}">{{ signal }}</option>
+            {% endfor %}
+        </select>
+        <br>
+
+        <input type="submit" value="Simular">
+    </form>
+</body>
+</html>
